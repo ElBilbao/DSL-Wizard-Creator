@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="wizard" nsURI="wizard" nsPrefix="wizard">
+  <eClassifiers xsi:type="ecore:EClass" name="Wizard">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titulo" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paginas" lowerBound="1"
+        upperBound="-1" eType="#//Pagina" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pagina">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inicial" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="campos" upperBound="-1"
+        eType="#//Campo" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="casillas" upperBound="-1"
+        eType="#//Casilla" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="botones" lowerBound="1"
+        upperBound="-1" eType="#//Boton" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Campo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="etiqueta" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obligatorio" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Casilla">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="etiqueta" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seleccionado" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nuevoDestino" eType="#//Pagina"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Boton" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="etiqueta" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Navegar" eSuperTypes="#//Boton">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destino" lowerBound="1"
+        eType="#//Pagina"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="casillas" upperBound="-1"
+        eType="#//Casilla"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mostrar" eSuperTypes="#//Boton">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mensaje" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cerrar" eSuperTypes="#//Boton"/>
+</ecore:EPackage>
